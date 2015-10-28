@@ -20,10 +20,14 @@ public class JokesContainer {
 
     }
 
-    public String getJoke() {
+    public JokeBean getJokeBean() {
+        JokeBean jokeBean = new JokeBean();
         Random RNG = new Random();
+
         int randomChooser = RNG.nextInt(mJokes.size() + 1);
-        return mJokes.get(randomChooser);
+        jokeBean.setJoke(mJokes.get(randomChooser));
+
+        return  jokeBean;
     }
 
 }
