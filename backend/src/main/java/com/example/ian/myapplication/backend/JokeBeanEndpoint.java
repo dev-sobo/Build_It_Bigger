@@ -33,7 +33,7 @@ public class JokeBeanEndpoint {
      * @return The <code>JokeBean</code> associated with <code>id</code>.
      */
     @ApiMethod(name = "getJoke")
-    public JokeBean getJoke() {
+    public JokeBean getJoke(@Named("id") int id) {
         // TODO: Should return a simple jokeBean
         logger.info("Calling getJoke method");
         //JokeBean jokeBean = getJokeBean();
