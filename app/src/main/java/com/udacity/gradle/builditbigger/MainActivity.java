@@ -85,6 +85,7 @@ class JokeEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });
+            jokeApiService = builder.build();
         }
         context = params[0];
 
