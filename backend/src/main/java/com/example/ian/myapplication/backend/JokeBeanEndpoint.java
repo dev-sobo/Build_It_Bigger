@@ -4,11 +4,11 @@ import com.example.JokesContainer;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
+import com.google.api.server.spi.config.Named;
 
 import java.util.logging.Logger;
 
-import javax.inject.Named;
-
+// TODO: In order to support inserting and listing JokeBeans, will need to implement GAE Datastore, with Objectify
 /**
  * An endpoint class we are exposing
  */
@@ -29,11 +29,11 @@ public class JokeBeanEndpoint {
     /**
      * This method gets the <code>JokeBean</code> object associated with the specified <code>id</code>.
      *
-     * @param id The id of the object to be returned.
+     * param id The id of the object to be returned.
      * @return The <code>JokeBean</code> associated with <code>id</code>.
      */
     @ApiMethod(name = "getJoke")
-    public JokeBean getJoke(@Named("id") int id) {
+    public JokeBean getJoke(@Named("id") int id) { //@Named("id") int id       may need this later for datastore stuff
         // TODO: Should return a simple jokeBean
         logger.info("Calling getJoke method");
         //JokeBean jokeBean = getJokeBean();
