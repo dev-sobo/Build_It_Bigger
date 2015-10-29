@@ -19,15 +19,16 @@ public class JokesContainer {
                 "\"That's right. My last four scores were seven years ago.\"");
 
     }
-
-    public JokeBean getJokeBean() {
-        JokeBean jokeBean = new JokeBean();
+        // TODO: Get simply a joke String from this method, and create the JokeBean in an Endpoint method
+    public String getJoke() {
+       // JokeBean jokeBean = new JokeBean();
         Random RNG = new Random();
 
-        int randomChooser = RNG.nextInt(mJokes.size() + 1);
-        jokeBean.setJoke(mJokes.get(randomChooser));
+        int randomChooser = RNG.nextInt(mJokes.size());
+       // jokeBean.setJoke(mJokes.get(randomChooser));
 
-        return  jokeBean;
+       //return jokeBean;
+        return mJokes.get(randomChooser);
     }
 
 }
