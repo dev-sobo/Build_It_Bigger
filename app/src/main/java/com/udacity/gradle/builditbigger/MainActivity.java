@@ -89,6 +89,7 @@ class JokeEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
         }
         context = params[0];
 
+
         try {
             JokeBean jokeBean = jokeApiService.getJoke(0).execute();
             //return jokeApiService.getJoke(1).execute().getJoke();

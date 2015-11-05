@@ -28,6 +28,16 @@ public class JokesContainer {
         mJokes.add("The last time we changed from daylight saving time, a preacher friend posted," + "\n" +
                 "\"For those who habitually show up 15 minutes late to church," + "\n" +
                 "allow me to remind you that tonight is the night you set your clock back 45 minutes.\"");
+        mJokes.add("DEA officer stops at a ranch in Texas, and talks with an old rancher.." +
+                " He tells the rancher, \"I need to inspect your ranch for ill*gally grown dr*gs.\"" +
+                " The rancher says, \"Okay , but do not go in that field over there,\" as he points out the location." +
+                " The DEA officer verbally explodes saying, \"Mister, I have the authority of the Federal Government with me.\"" +
+                " Reaching into his rear pants pocket, he removes his badge and proudly displays it to the rancher." +
+                " \"See this badge? This badge means I am allowed to go wherever I wish.... On any land.. No questions asked or answers given." +
+                " Have I made myself clear? Do you understand? \" The rancher nods politely, apologizes, and goes about his chores." +
+                " A short time later, the old rancher hears loud screams and sees the DEA officer running for his life chased by the rancher's big Santa Gertrudis Bull..." +
+                " With every step the bull is gaining ground on the officer, and it seems likely that he'll get gored before he reaches safety." +
+                " The officer is clearly terrified. The rancher throws down his tools, runs to the fence and yells at the top of his lungs... \"Your badge... Show him your badge!\"");
     }
         // TODO: Get simply a joke String from this method, and create the JokeBean in an Endpoint method
     public String getJoke() {
