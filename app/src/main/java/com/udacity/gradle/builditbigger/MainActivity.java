@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 import com.example.ian.androidjokelibrary.JokeActivity;
 import com.example.ian.myapplication.backend.jokeBeanApi.JokeBeanApi;
 import com.example.ian.myapplication.backend.jokeBeanApi.model.JokeBean;
-import com.example.ian.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -95,7 +93,7 @@ class JokeEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
             //return jokeApiService.getJoke(1).execute().getJoke();
             return jokeBean.getJoke();
         } catch (IOException error) {
-            return error.getMessage();
+            return null;
         }
 
         //return null;
@@ -103,13 +101,19 @@ class JokeEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String joke) {
-        super.onPostExecute(joke);
-        Intent intent = new Intent(context, JokeActivity.class);
-        intent.putExtra(Intent.EXTRA_TEXT, joke);
-        context.startActivity(intent);
+       // super.onPostExecute(joke);
+        if (joke != null && joke != "") {
+            Log.d("ON POST EXECUTE", joke);
+            Intent intent = new Intent(context, JokeActivity.class);
+            intent.putExtra(Intent.EXTRA_TEXT, joke);
+            context.startActivity(intent);
+        }
+        else {
+            Toast.makeText(context, "Network Error. Check your connection.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
-
+/*
 class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
@@ -139,7 +143,7 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         Log.i("MAINACTIVITY ASYNCTASK", result);
     }
-}
+}*/
 /*MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
                     // options for running against local devappserver

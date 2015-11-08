@@ -13,6 +13,8 @@ import com.google.android.gms.ads.AdView;
 /**
  * A placeholder fragment containing a simple view.
  */
+// TODO: Implement Paid and Free Flavors. In paid, remove all ads and all ad-related dependencies
+// TODO: Also, add ads to all screens of the Free version.
 public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment() {

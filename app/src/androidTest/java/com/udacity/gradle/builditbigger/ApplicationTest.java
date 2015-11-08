@@ -2,6 +2,7 @@ package com.udacity.gradle.builditbigger;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.MediumTest;
+import android.util.Log;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -31,12 +32,12 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
            // Context context = getInstrumentation().getTargetContext().getApplicationContext();
             MainActivity mainActivity = getActivity();
             asyncTask.execute(mainActivity);
-            joke =  asyncTask.get(30, TimeUnit.SECONDS);
+            joke =  asyncTask.get(35, TimeUnit.SECONDS);
             assertNotNull("Joke String was returned as null", joke);
+            Log.d("ACTIVITY TEST", joke);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             e.printStackTrace();
             fail("Timeout");
         }
-
     }
 }
