@@ -9,7 +9,7 @@ public class JokesContainer {
     private ArrayList<String> mJokes;
 
     public JokesContainer() {
-        mJokes = new ArrayList<String>(Arrays.asList("test", "joke"));
+        mJokes = new ArrayList<String>(Arrays.asList("Why did the pirate skip the R rated movie? It had too much booty"));
         mJokes.add("An older man walks into a bar wearing a stovepipe hat, a waistcoat and a phony beard. He sits down at a bar and orders a drink. As the bartender sets it down, he asks, \"Going to a party?\"\n" +
                 "\n" +
                 "\"Yeah, a costume party,\" the man answers, \"I'm supposed to come dressed as my love life.\"\n" +
