@@ -30,7 +30,7 @@ dependencies {
 }
 
 appengine {
-    downloadSdk = true
+    downloadSdk = false
     appcfg {
         oauth2 = true
     }

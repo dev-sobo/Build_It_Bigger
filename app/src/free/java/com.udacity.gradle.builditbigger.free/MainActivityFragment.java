@@ -18,6 +18,8 @@ import com.udacity.gradle.builditbigger.R;
 // TODO: Also, add ads to all screens of the Free version.
 public class MainActivityFragment extends Fragment {
 
+
+
     public MainActivityFragment() {
     }
 
@@ -34,6 +36,7 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
         return root;
     }
 }
