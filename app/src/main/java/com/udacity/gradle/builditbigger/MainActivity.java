@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,11 +33,14 @@ public class MainActivity extends ActionBarActivity {
 
     InterstitialAd mInterstitialAd;
     Button mTellJokeButton;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = getApplicationContext();
+
        // new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
         mTellJokeButton = (Button) findViewById(R.id.freeTellJokeButtonId);
 
@@ -46,7 +52,8 @@ public class MainActivity extends ActionBarActivity {
             public void onAdClosed() {
                 mTellJokeButton.setEnabled(false);
                 requestNewInterstitial();
-                new JokeEndpointsAsyncTask().execute(MainActivity.this);
+                new JokeEndpointsAsyncTask().execute(Pair.create((Context)MainActivity.this, mTellJokeButton));
+
             }
         });
         requestNewInterstitial();
@@ -95,7 +102,7 @@ public class MainActivity extends ActionBarActivity {
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
-            new JokeEndpointsAsyncTask().execute(this);
+            new JokeEndpointsAsyncTask().execute(Pair.create((Context)MainActivity.this, mTellJokeButton));
         }
 
 
@@ -112,13 +119,14 @@ public class MainActivity extends ActionBarActivity {
 
 }
 
-class JokeEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+class JokeEndpointsAsyncTask extends AsyncTask<Pair<Context, Button>, Void, String> {
     private static JokeBeanApi jokeApiService = null;
     private Context context;
+    private Button button;
 
 
     @Override
-    protected String doInBackground(Context... params) {
+    protected String doInBackground(Pair<Context,Button>... params) {
         if(jokeApiService == null) {
             JokeBeanApi.Builder builder = new JokeBeanApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -131,7 +139,23 @@ class JokeEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
                     });
             jokeApiService = builder.build();
         }
-        context = params[0];
+        context = params[0].first;
+        button = params[0].second;
+       /* Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                button.setEnabled(true);
+            }
+        };
+        runnable.run();*/
+        //Looper looper = Looper.getMainLooper();
+        //looper.getThread().run();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                button.setEnabled(true);
+            }
+        }, 1000);
 
 
         try {
