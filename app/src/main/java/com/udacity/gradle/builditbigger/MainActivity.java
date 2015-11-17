@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.Pair;
@@ -53,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
                 mTellJokeButton.setEnabled(false);
                 requestNewInterstitial();
                 new JokeEndpointsAsyncTask().execute(Pair.create((Context)MainActivity.this, mTellJokeButton));
+                mTellJokeButton.setEnabled(true);
 
             }
         });
@@ -150,12 +149,12 @@ class JokeEndpointsAsyncTask extends AsyncTask<Pair<Context, Button>, Void, Stri
         runnable.run();*/
         //Looper looper = Looper.getMainLooper();
         //looper.getThread().run();
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+      /*  new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 button.setEnabled(true);
             }
-        }, 1000);
+        }, 1000);*/
 
 
         try {
