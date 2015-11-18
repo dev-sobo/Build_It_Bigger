@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.ian.androidjokelibrary.JokeActivity;
@@ -77,6 +79,7 @@ public class JokeEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
    protected void onPostExecute(String joke) {
         MainActivity postActivity = (MainActivity) context;
         Button button = (Button) postActivity.findViewById(R.id.freeTellJokeButtonId);
+       ProgressBar progressBar = (ProgressBar) postActivity.findViewById(R.id.progressBar);
 
       // super.onPostExecute(joke);
        if (joke != null && joke != "") {
@@ -84,6 +87,7 @@ public class JokeEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
            Intent intent = new Intent(context, JokeActivity.class);
            intent.putExtra(Intent.EXTRA_TEXT, joke);
            button.setEnabled(true);
+           progressBar.setVisibility(View.INVISIBLE);
            context.startActivity(intent);
        }
        else {

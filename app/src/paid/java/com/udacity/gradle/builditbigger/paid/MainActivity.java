@@ -1,27 +1,13 @@
 package com.udacity.gradle.builditbigger.paid;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.ian.androidjokelibrary.JokeActivity;
-import com.example.ian.myapplication.backend.jokeBeanApi.JokeBeanApi;
-import com.example.ian.myapplication.backend.jokeBeanApi.model.JokeBean;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.builditbigger.R;
-
-import java.io.IOException;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -35,31 +21,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
-
-       // new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
-      //  mTellJokeButton = (Button) findViewById(R.id.freeTellJokeButtonId);
-
-        //mInterstitialAd = new InterstitialAd(this);
-      //  mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-
-       /* mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                mTellJokeButton.setEnabled(false);
-                requestNewInterstitial();
-                new JokeEndpointsAsyncTask().execute(Pair.create((Context) MainActivity.this, mTellJokeButton));
-                //mTellJokeButton.setEnabled(true);
-
-            }
-        });*/
-       // requestNewInterstitial();
-
-        /*mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                new JokeEndpointsAsyncTask().execute(MainActivity.this);
-            }
-        });*/
 
 
     }
@@ -89,29 +50,10 @@ public class MainActivity extends ActionBarActivity {
 
     public void tellJoke(View view){
         // TODO: Have this kick off an AsyncTask that
-       /* JokesContainer jokesContainer = new JokesContainer();
-        String joke = jokesContainer.getJoke();
-        Toast.makeText(this,joke , Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra(Intent.EXTRA_TEXT, joke);
-        startActivity(intent);*/
-  /*      if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            new JokeEndpointsAsyncTask().execute(Pair.create((Context)MainActivity.this, mTellJokeButton));
-        }
-*/
 
         new JokeEndpointsAsyncTask().execute(this);
+
     }
-    /*private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
-        mInterstitialAd.loadAd(adRequest);
-
-    }*/
-
 }
 
 /*
