@@ -20,14 +20,8 @@ allprojects {
     }
 }
 
-/*task gceTest (dependsOn: "setUpTest") {
-    doLast {
-       tasks.getByPath(":app:connectedAndroidTest").path
-    }
 
-}*/
-
-task setUpTest(dependsOn: [":backend:appengineRun", ":app:connectedAndroidTest", ":backend:appengineStop"]) {
+task runAppEngine (dependsOn: [":backend:appengineRun", ":app:connectedAndroidTest", ":backend:appengineStop"]) {
     evaluationDependsOn ":backend"
 
     project(":backend") {
@@ -35,8 +29,9 @@ task setUpTest(dependsOn: [":backend:appengineRun", ":app:connectedAndroidTest",
             daemon true
         }
     }
-   /* doLast {
-        println "App engine should be set up and running"
-        tasks.getByPath(":app:connectedAndroidTest").path
-    }*/
+
+    doLast {
+        println "All done!"
+    }
 }
+
