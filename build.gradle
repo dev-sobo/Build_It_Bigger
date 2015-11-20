@@ -24,9 +24,9 @@ allprojects {
 task runAppEngine (dependsOn: [":backend:appengineRun", ":app:connectedAndroidTest", ":backend:appengineStop"]) {
     evaluationDependsOn ":backend"
 
-    project(":backend") {
-        appengine {
-            daemon true
+    project(":backend"){
+        appengine{
+            daemon = true
         }
     }
 
