@@ -6,14 +6,37 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
+      //  classpath 'com.google.appengine:gradle-appengine-plugin:1.9.27'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+
 allprojects {
     repositories {
         jcenter()
     }
+}
+
+/*task gceTest (dependsOn: "setUpTest") {
+    doLast {
+       tasks.getByPath(":app:connectedAndroidTest").path
+    }
+
+}*/
+
+task setUpTest(dependsOn: [":backend:appengineRun", ":app:connectedAndroidTest", ":backend:appengineStop"]) {
+    evaluationDependsOn ":backend"
+
+    project(":backend") {
+        appengine {
+            daemon true
+        }
+    }
+   /* doLast {
+        println "App engine should be set up and running"
+        tasks.getByPath(":app:connectedAndroidTest").path
+    }*/
 }
