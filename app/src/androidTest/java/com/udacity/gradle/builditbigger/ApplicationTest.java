@@ -1,28 +1,14 @@
 package com.udacity.gradle.builditbigger;
 
-//import com.udacity.gradle.builditbigger.paid.MainActivity;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.util.Log;
 import android.widget.Button;
 
-import com.udacity.gradle.builditbigger.free.JokeEndpointsAsyncTask;
-import com.udacity.gradle.builditbigger.free.MainActivity;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
-//import com.udacity.gradle.builditbigger.paid.MainActivity;
-
-//import com.udacity.gradle.builditbigger.paid.JokeEndpointsAsyncTask;
-
-
-
-//import com.udacity.gradle.builditbigger.free.JokeEndpointsAsyncTask;
-//import com.udacity.gradle.builditbigger.free.MainActivity;
-
 
 
 /**
