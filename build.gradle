@@ -29,7 +29,8 @@ task runAppEngine (dependsOn: [":backend:appengineRun", ":app:connectedAndroidTe
             daemon = true
         }
     }
-
+//    tasks.getByPath(':app:connectedAndroidTests').mustRunAfter ':backend:appengineRun'
+  //  tasks.getByPath(':backend:appengineStop').mustRunAfter ':app:connectedAndroidTests'
     doLast {
         println "All done!"
     }
