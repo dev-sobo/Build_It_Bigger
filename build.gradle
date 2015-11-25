@@ -35,6 +35,7 @@ task runAppEngine (dependsOn: [":backend:appengineRun", ":app:connectedAndroidTe
     doLast {
         println "All done!"
     }
+
 }*/
 
 task testAppEngine (dependsOn: ":backend:appengineRun") {

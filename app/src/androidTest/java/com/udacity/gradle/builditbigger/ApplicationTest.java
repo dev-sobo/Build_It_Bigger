@@ -15,6 +15,7 @@ import java.util.concurrent.TimeoutException;
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
 */
 public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivity> {
+    private static final String LOG_TAG = ApplicationTest.class.getSimpleName();
     JokeEndpointsAsyncTask asyncTask;
     public ApplicationTest() {
         super(MainActivity.class);
@@ -38,8 +39,9 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
             //testTellJoke = (Button) mainActivity.findViewById(R.id.freeTellJokeButtonId);
             asyncTask.execute(mainActivity);
             joke =  asyncTask.get(35, TimeUnit.SECONDS);
+            Log.d(LOG_TAG, joke);
             assertNotNull("Joke String was returned as null", joke);
-            Log.d("ACTIVITY TEST", joke);
+            Log.d(LOG_TAG, joke);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             e.printStackTrace();
             fail("Timeout");
